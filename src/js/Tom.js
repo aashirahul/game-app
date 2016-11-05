@@ -7,7 +7,7 @@ class Tom{
 	}
 
 shoot(wasHit){
-	shots = shots+1;
+	this.shots = this.shots+1;
 
 	if(wasHit){
 		this.score = this.score+1;
@@ -25,5 +25,6 @@ hasMissesReached(){
 		return false;
 	}
 }
+}
 
-	
+	export {Tom};
