@@ -31,6 +31,16 @@ describe('Something We Want To Test', function () {
       assert.equal(changevelocity, -5);
 
     });
+    it('velocity should turn positive', function () {
+      let jerry1 = new Jerry();
+      jerry1.position = jerry1.minLimit;
+      let startingvelocity = jerry1.velocity;
+      jerry1.move();
+      let changevelocity = jerry1.velocity;
+      assert.equal(changevelocity, 5);
+
+    });
+
 
   });
 
