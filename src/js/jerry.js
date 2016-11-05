@@ -5,6 +5,7 @@ class Jerry {
 		this.velocity=5;
 		this.position=this.minLimit;
 	}
+	
 
 	move(){
 		this.position=this.position+this.velocity;

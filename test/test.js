@@ -22,6 +22,15 @@ describe('Something We Want To Test', function () {
       assert.equal(endPosition, startPosition + jerry1.velocity);
     });
 
+    it('should not go above max-limit', function () {
+      let jerry1 = new Jerry();
+      let startPosition = jerry1.position;
+      jerry1.move();
+      let endPosition = jerry1.position;
+      
+      assert.equal(endPosition, maxLimit);
+    });
+
   });
 
 
