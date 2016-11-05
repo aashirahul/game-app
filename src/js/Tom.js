@@ -1,19 +1,29 @@
 class Tom{
-	constructor(shots,misses,score){
-		this.misses=5;
-		this.shots=shots;
-		this.score=score;
+	constructor(){
+		this.misses=0;
+		this.maxMisses = 5;
+		this.shots=0;
+		this.score=0;
 	}
 
-takingShots(){
+shoot(wasHit){
 	shots = shots+1;
+
+	if(wasHit){
+		this.score = this.score+1;
+	} else {
+		if(this.misses<this.maxMisses){
+			this.misses = this.misses+1;
+		} 
+
+	}
+}
+hasMissesReached(){
+	if(this.misses >= this.maxMisses){
+		return true;
+	} else {
+		return false;
+	}
 }
 
-countMisses(){
-	misses = misses+1;	
-}
-increaseScore(){
-	score = score+1;
-}
-
-}
+	
