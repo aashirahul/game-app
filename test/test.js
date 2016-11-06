@@ -109,6 +109,34 @@ describe('Something We Want To Test', function () {
     	let start2 = game.startGame();
      	assert.isTrue(start2);
     });
+    it('the function should check if it a hit ,if positions are in the given range', function () {
+    	let game = new Game();
+    	game.startGame();
+    	game.jerry.position = 400;
+    	game.tom.projectile.BalloonPosition = 520;
+    	game.checkIfItIsAHit();
+     	assert.equal(game.tom.score,1);
+    });
+     it('the function to see that shoot doesnot get invoked when balloon is not reached jerry' , function () {
+    	let game = new Game();
+    	game.startGame();
+    	game.tom.projectile.BalloonPosition = 300;
+    	game.checkIfItIsAHit();
+     	assert.equal(game.tom.score,0);
+    });
+      it('the function to should check that misses are incremented when tom goes past jerry' , function () {
+    	let game = new Game();
+    	game.startGame();
+    	game.tom.projectile.BalloonPosition = 600;
+    	game.checkIfItIsAHit();
+     	assert.equal(game.tom.misses,1);
+    });
+
+
+
+
+
+
 
 
 

@@ -31,7 +31,19 @@ class Game{
 			this.tom.projectile.changingBalloonPosition();
 
 		}
+		this.checkIfItIsAHit();
+
 	}
+
+	checkIfItIsAHit(){
+		if((this.jerry.position >= 375 && this.jerry.position <= 425) && 
+			(this.tom.projectile.BalloonPosition >= 500 && this.tom.projectile.BalloonPosition < 550) ){
+			this.tom.shoot(true);
+		} else if(this.tom.projectile.BalloonPosition > 550){
+			this.tom.shoot(false);
+		}
+	}
+	
 
 	clickEvent(){
 		$(".button").click(startGame);

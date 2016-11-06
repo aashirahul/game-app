@@ -7,11 +7,12 @@ class Tom{
 		this.misses=0;
 		this.maxMisses = 5;
 		this.shots=0;
-		this.score=0;
+		this.score=0; 
 		
 	}
 
 
+	
 	startProjectile(){
 		this.projectile = new Balloon ;
 	}
