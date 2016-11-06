@@ -4,6 +4,7 @@ import chai from 'chai';
 // Import Any Files to Test
 import { Jerry } from "../src/js/jerry";
 import { Tom } from "../src/js/Tom";
+import { Balloon } from "../src/js/Balloon";
 
 // Set Chai Constants
 const expect = chai.expect;
@@ -43,33 +44,50 @@ describe('Something We Want To Test', function () {
     });
     it('shots should increase and if was hit score should increase', function () {
       let tom1 = new Tom();
-      tom1.startScore = tom1.score;
-      tom1.startShots = tom1.shots;
-      tom1.startMisses = tom1.misses;
+      let startScore = tom1.score;
+      let startShots = tom1.shots;
+      let startMisses = tom1.misses;
       tom1.shoot(true)
       let scoreChange = tom1.score;
       let shotsChange = tom1.shots;
       let missesChange = tom1.misses;
-      assert.equal(scoreChange, 1);
-      assert.equal(shotsChange, 1)
-      assert.equal(missesChange, 0);
+      assert.equal(scoreChange, startScore+1);
+      assert.equal(shotsChange, startShots+1)
+      assert.equal(missesChange, startMisses);
 
     });
 
     it('shots should increase and if was not a hit misses should increase', function () {
       let tom1 = new Tom();
-      tom1.startScore = tom1.score;
-      tom1.startShots = tom1.shots;
-      tom1.startMisses = tom1.misses;
+      let startScore = tom1.score;
+      let startShots = tom1.shots;
+      let startMisses = tom1.misses;
       tom1.shoot(false)
       let scoreChange = tom1.score;
       let shotsChange = tom1.shots;
       let missesChange = tom1.misses;
-      assert.equal(scoreChange, 0);
-      assert.equal(shotsChange, 1)
-      assert.equal(missesChange, 1);
+      assert.equal(scoreChange, startScore);
+      assert.equal(shotsChange, startShots+1)
+      assert.equal(missesChange, startMisses+1);
 
     });
+    it('waterBalloon should increase', function () {
+      let Balloon1 = new Balloon();
+      let startPosition = Balloon1.BalloonStart;
+      Balloon1.changingBalloonPosition();
+      let changeBalloonPosition = Balloon1.BalloonPosition;
+      assert.equal(changeBalloonPosition, startPosition+Balloon1.BalloonVelocity);
+
+    });
+    it('waterBalloon should not go beyond end position', function () {
+      let Balloon1 = new Balloon();
+      Balloon1.BalloonPosition = Balloon1.BalloonEnd;
+      Balloon1.changingBalloonPosition();
+      let changeVelocity = Balloon1.BalloonVelocity;
+      assert.equal(changeVelocity, 0);
+
+    });
+
 
 
   });

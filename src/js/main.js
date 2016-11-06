@@ -1,46 +1,68 @@
 
 
+import _ from 'lodash';
+import $ from 'jquery';
+
+import { Jerry } from "./jerry";
+import { Tom } from "./Tom";
+import { Balloon } from "./Balloon";
+
+
 class Game{
 	constructor(runTime){
 		this.tom = new Tom;
 		this.jerry = new Jerry;
 		this.runTime = runTime;
 	}
-	function setupGame{
+
+	setupGame(){
 		 this.runtimeEvent();
 		 this.clickEvent();
+
 		}
-	function runtimeEvent(runTime){
-		var interval=setInterval(processRunTimeEvents,100);
+
+	runtimeEvent(runTime){
+		this.interval = setInterval(processRunTimeEvents,100);
 	}
 	processRunTimeEvents(){
 		this.reduceRunTime = this.runTime-100;
 		this.jerry.move();
+		if(this.tom.projectile =! undefined){
+			this.tom.Balloon.BalloonPosition();
+
+		}
 	}
 
+	clickEvent(){
+		$(".button").click(startGame);
 
+	}
+	startGame(){
+		this.tom.startProjectile();
+	}
 
-
-	//playGame(){
-		//.click(takingShots)
-
-
-
-	//}
-	gameOver(){
-		if(this.tom.misses=5){
-			return true;
+	/*gameOver(){
+		if(this.checkIfGameOver){
+			this.getConfirmation();
 		}
+
+	getConfirmation(){
+		confirm("game over");
+
+	}
 
 	}
 
 	checkIfGameOver(){
-		if(this.misses>5){
-	 		return true;
+		if(this.tom.hasMissesReached()){
+			return true;
+		} else {
+			return false;
 		}
 
-	}
-	display(){
+	}*/
+
+	
 
 	}
-}
+	
