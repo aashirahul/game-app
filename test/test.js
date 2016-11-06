@@ -5,6 +5,7 @@ import chai from 'chai';
 import { Jerry } from "../src/js/jerry";
 import { Tom } from "../src/js/Tom";
 import { Balloon } from "../src/js/Balloon";
+import { Game } from "../src/js/main";
 
 // Set Chai Constants
 const expect = chai.expect;
@@ -85,6 +86,12 @@ describe('Something We Want To Test', function () {
       Balloon1.changingBalloonPosition();
       let changeVelocity = Balloon1.BalloonVelocity;
       assert.equal(changeVelocity, 0);
+
+    });
+    it('the function should make a new balloon for the first time', function () {
+    	let game = new Game();
+    	game.startGame();
+     	 assert.isDefined(game.tom.projectile);
 
     });
 

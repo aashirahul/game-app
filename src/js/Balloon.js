@@ -6,12 +6,20 @@ class Balloon {
 		this.BalloonEnd = 800 ;
 		this.BalloonPosition = this.BalloonStart;
 		this.BalloonVelocity = 5;
-		}
+	}
 
-		changingBalloonPosition(){
+	changingBalloonPosition(){
 		this.BalloonPosition = this.BalloonPosition + this.BalloonVelocity;
 		if(this.BalloonPosition >= this.BalloonEnd){
 			this.BalloonVelocity = 0;
+		}
+	}
+
+	isMoving() {
+		if(this.BalloonVelocity != 0) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 }

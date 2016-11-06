@@ -27,8 +27,8 @@ class Game{
 	processRunTimeEvents(){
 		this.reduceRunTime = this.runTime-100;
 		this.jerry.move();
-		if(this.tom.projectile =! undefined){
-			this.tom.Balloon.BalloonPosition();
+		if(this.tom.projectile != undefined){
+			this.tom.projectile.changingBalloonPosition();
 
 		}
 	}
@@ -38,7 +38,9 @@ class Game{
 
 	}
 	startGame(){
-		this.tom.startProjectile();
+		if(this.tom.projectile == undefined || !this.tom.projectile.isMoving()) {
+			this.tom.startProjectile();
+		}
 	}
 
 	/*gameOver(){
@@ -65,4 +67,5 @@ class Game{
 	
 
 	}
+	export {Game};
 	
