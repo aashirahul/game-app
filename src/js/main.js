@@ -58,15 +58,12 @@ class Game{
 		return false;
 	}
 
-	/*gameOver(){
+	gameOver(){
 		if(this.checkIfGameOver){
-			this.getConfirmation();
+			$(".end-result").append(`<div> GAME OVER </div>`);
 		}
 
-	getConfirmation(){
-		confirm("game over");
 
-	}
 
 	}
 
@@ -77,7 +74,7 @@ class Game{
 			return false;
 		}
 
-	}*/
+	}
 
 	
 
