@@ -40,7 +40,10 @@ class Game{
 	startGame(){
 		if(this.tom.projectile == undefined || !this.tom.projectile.isMoving()) {
 			this.tom.startProjectile();
+			return true;
 		}
+
+		return false;
 	}
 
 	/*gameOver(){

@@ -91,8 +91,23 @@ describe('Something We Want To Test', function () {
     it('the function should make a new balloon for the first time', function () {
     	let game = new Game();
     	game.startGame();
-     	 assert.isDefined(game.tom.projectile);
+    	game.startGame();
+     	assert.isDefined(game.tom.projectile);
 
+    });
+    it('the function should not  make a new balloon', function () {
+    	let game = new Game();
+    	let start1 = game.startGame();
+    	let start2 = game.startGame();
+     	assert.isTrue(start1);
+     	assert.isFalse(start2);
+    });
+    it('the function should make a new balloon when the older ballon is stopped', function () {
+    	let game = new Game();
+    	let start1 = game.startGame();
+    	game.tom.projectile.BalloonVelocity = 0;
+    	let start2 = game.startGame();
+     	assert.isTrue(start2);
     });
 
 
