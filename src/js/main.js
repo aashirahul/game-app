@@ -10,9 +10,14 @@ import { Balloon } from "./Balloon";
 
 class Game{
 	constructor(runTime){
-		this.tom = new Tom;
-		this.jerry = new Jerry;
+		this.tom = new Tom();
+		this.jerry = new Jerry();
 		this.runTime = runTime;
+
+		this.processRunTimeEvents = this.processRunTimeEvents.bind(this);
+		this.startGame = this.startGame.bind(this);
+
+		this.setupGame();
 	}
 
 	setupGame(){
@@ -22,31 +27,29 @@ class Game{
 		}
 
 	runtimeEvent(runTime){
-		this.interval = setInterval(processRunTimeEvents,100);
+		this.interval = setInterval(this.processRunTimeEvents,20);
 	}
 	processRunTimeEvents(){
-		this.reduceRunTime = this.runTime-100;
+		this.reduceRunTime = this.runTime-20;
 		this.jerry.move();
-		if(this.tom.projectile != undefined){
+		if(this.tom.projectile != undefined && this.tom.projectile.isMoving()){
 			this.tom.projectile.changingBalloonPosition();
-
+			this.checkIfItIsAHit();
 		}
-		this.checkIfItIsAHit();
-
 	}
 
 	checkIfItIsAHit(){
 		if((this.jerry.position >= 375 && this.jerry.position <= 425) && 
-			(this.tom.projectile.BalloonPosition >= 500 && this.tom.projectile.BalloonPosition < 550) ){
+			(this.tom.projectile.BalloonPosition >= -50 && this.tom.projectile.BalloonPosition < 0) ){
 			this.tom.shoot(true);
-		} else if(this.tom.projectile.BalloonPosition > 550){
+		} else if(this.tom.projectile.BalloonPosition <= -60){
 			this.tom.shoot(false);
 		}
 	}
 	
 
 	clickEvent(){
-		$(".button").click(startGame);
+		$(".button").click(this.startGame);
 
 	}
 	startGame(){
@@ -79,5 +82,8 @@ class Game{
 	
 
 	}
+
+var game = new Game(6000);
+
 	export {Game};
 	

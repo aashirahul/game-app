@@ -1,18 +1,20 @@
 
+import $ from 'jquery';
 
 class Balloon {
 	constructor(){
-		this.BalloonStart = 0;
-		this.BalloonEnd = 800 ;
+		this.BalloonStart = 525;
+		this.BalloonEnd = -60 ;
 		this.BalloonPosition = this.BalloonStart;
-		this.BalloonVelocity = 5;
+		this.BalloonVelocity = -5;
 	}
 
 	changingBalloonPosition(){
 		this.BalloonPosition = this.BalloonPosition + this.BalloonVelocity;
-		if(this.BalloonPosition >= this.BalloonEnd){
+		if(this.BalloonPosition <= this.BalloonEnd){
 			this.BalloonVelocity = 0;
 		}
+		$("#balloon").css({top:this.BalloonPosition});
 	}
 
 	isMoving() {

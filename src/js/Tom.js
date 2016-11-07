@@ -1,3 +1,4 @@
+import $ from 'jquery';
 
 
 import { Balloon } from "./Balloon";
@@ -14,7 +15,7 @@ class Tom{
 
 	
 	startProjectile(){
-		this.projectile = new Balloon ;
+		this.projectile = new Balloon() ;
 	}
 
 	shoot(wasHit){
@@ -22,12 +23,17 @@ class Tom{
 
 		if(wasHit){
 			this.score = this.score+1;
+			this.projectile.BalloonVelocity = 0;
+			this.projectile.BalloonPosition = this.projectile.BalloonEnd;
 		} else {
 			if(this.misses<this.maxMisses){
 				this.misses = this.misses+1;
 			} 
 
 		}
+		$(".input-result").html("");
+		$(".input-result").append(`<div class="shots">Shots: ${this.shots}</div><div class="score"> Score: ${this.score}</div>
+			<div class="misses"> Misses: ${this.misses}</div>`);
 	}
 
 	hasMissesReached(){
